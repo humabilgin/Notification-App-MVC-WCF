@@ -1,0 +1,83 @@
+﻿
+@model NotificationProjectFrontendMVC.NotificationServiceReference.Announcement[]
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="@Url.Content("~/Content/notificationscreen.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="index.html" method="post">
+                    <h1> Duyurular </h1>
+
+                    <fieldset>
+
+                        <legend><span class="number">1</span> Duyuru İşlemleri</legend>
+
+                        <label for="content">İçerik:</label>
+                        <input type="text" id="content" name="content">
+
+                        <label for="startDate">Başlangıç Zamanı:</label>
+                        <input type="email" id="startDate" name="startDate">
+
+                        <label for="endDate">Bitiş Zamanı:</label>
+                        <input type="password" id="endDate" name="endDate">
+
+                        <label>Önem Derecesi:</label>
+                        <input type="radio" id="1" value="1" name="user_age"><label for="under_13" class="light">1</label><br>
+                        <input type="radio" id="2" value="2" name="user_age"><label for="over_13" class="light">2</label><br>
+                        <input type="radio" id="3" value="3" name="user_age"><label for="over_13" class="light">3</label>
+
+                        <button type="submit">Kaydet</button>
+                        <button type="submit">Temizle</button>
+                        <button type="submit">Sil</button>
+
+                    </fieldset>
+                    <fieldset>
+
+                        <legend><span class="number">2</span> Duyuru Listesi</legend>
+
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <th>İçerik</th>
+                                <th>Başlangıç Zamanı</th>
+                                <th>Bitiş Zamanı</th>
+                                <th>Önem Seviyesi</th>
+                            </tr>
+                            @foreach (NotificationProjectFrontendMVC.NotificationServiceReference.Announcement announcement in Model)
+                            {
+                        <tr>
+                            <td>@announcement.ID</td>
+                            <td>@announcement.Body</td>
+                            <td>@announcement.StartDate</td>
+                            <td>@announcement.EndDate</td>
+                            <td>@announcement.Severity</td>
+                        </tr>
+                            }
+                        </table>
+                    </fieldset>
+
+                    
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+        
+    </div>
+</body>
+</html>
